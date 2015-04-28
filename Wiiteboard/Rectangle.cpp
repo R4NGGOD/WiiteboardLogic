@@ -1,39 +1,27 @@
 #include "stdafx.h"
 #include <vector>
-#include "Point.h"
 #include "Rectangle.h"
 
-class Rectangle {
-	
-	private:
-		std::vector<Point> points;
+namespace uschi {
 
-	Rectangle::Rectangle()
-	{
-	}
-
-	bool fillVector(std::vector<Point> vector) {
-		if (vector.size != 4) {
+	bool Rectangle::fillVector(std::vector<Point> vector) {
+		if (vector.size() != 4) {
 			points = vector;
 			return true;
 		}
 		return false;
 	}
 
-	std::vector<Point> getVector() {
+	std::vector<Point> Rectangle::getVector() {
 		return this->points;
-	}	
+	}
 
-	void addPoint(Point point) {
+	void Rectangle::addPoint(Point point) {
 		this->points.push_back(point);
 	}
 
-	bool isInsideOf(Point point) {
+	bool Rectangle::isInsideOf(Point point) {
 
 		return false;
 	}
-
-	Rectangle::~Rectangle()
-	{
-	}
-};
+}

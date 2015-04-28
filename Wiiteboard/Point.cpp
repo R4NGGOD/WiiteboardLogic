@@ -1,13 +1,8 @@
 #include "stdafx.h"
 #include "Point.h"
 
-class Point {
-	private:
-		double x;
-		double y;
-		double z;
 
-	Point::Point() {}
+
 	Point::Point(double x, double y, double z)
 	{
 			this->x = x;
@@ -15,31 +10,31 @@ class Point {
 			this->z = z;
 	}
 
-	void setX(double x) {
+	void Point::setX(double x) {
 		this->x = x;
 	}
 
-	double getX() {
+	double Point::getX() {
 		return this->x;
 	}
 
-	void setY(double y) {
+	void Point::setY(double y) {
 		this->y = y;
 	}
 
-	double getY() {
+	double Point::getY() {
 		return this->y;
 	}
 
-	void setZ(double z) {
+	void Point::setZ(double z) {
 		this->z = z;
 	}
 
-	double getZ() {
+	double Point::getZ() {
 		return this->z;
 	}
 
+	
 	Point::~Point()
 	{
 	}
-};

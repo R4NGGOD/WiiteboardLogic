@@ -1,13 +1,20 @@
-#pragma once
+#ifndef Rectangle_h
+#define Rectangle_h
 
-class Rectangle
-{
-public:
-	Rectangle();
-	~Rectangle();
-	bool fillVector(std::vector<Point> vector);
-	void addPoint(Point point);
-	std::vector<Point> getVector();
-	bool isInsideOf(Point point);
-};
+#include "Point.h"
+#include <vector>
 
+namespace uschi {
+	class Rectangle
+	{
+	private:
+		std::vector<Point> points;
+	public:
+		bool Rectangle::fillVector(std::vector<Point> vector);
+		void Rectangle::addPoint(Point point);
+		std::vector<Point> Rectangle::getVector();
+		bool Rectangle::isInsideOf(Point point);
+		Rectangle::~Rectangle() { };
+	};
+}
+#endif
