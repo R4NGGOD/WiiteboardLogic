@@ -21,7 +21,10 @@ namespace uschi {
 	}
 
 	bool Rectangle::isInsideOf(Point point) {
-
+		if (point.getX() < 0 || point.getY() < 0 ||
+			point.getX() > 1 || point.getY() > 1) {
+			return true;
+		}
 		return false;
 	}
 }
