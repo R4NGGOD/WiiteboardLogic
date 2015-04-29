@@ -81,7 +81,10 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="InputHandling.h" />
+    <ClInclude Include="MorphingController.h" />
     <ClInclude Include="MouseInputDLL.h" />
+    <ClInclude Include="PenAction.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="QuadrangleMorphing.h" />
     <ClInclude Include="Rectangle.h" />
@@ -89,6 +92,8 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="InputHandling.cpp" />
+    <ClCompile Include="MorphingController.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="QuadrangleMorphing.cpp" />
     <ClCompile Include="Rectangle.cpp" />

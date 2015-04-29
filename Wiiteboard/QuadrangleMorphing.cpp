@@ -10,8 +10,12 @@ using namespace uschi;
 
 	QuadrangleMorphing::QuadrangleMorphing(Rectangle quadrangle) {
 		this->morphableQuadrangle = quadrangle;
-		this->quadrangleHistory.push_back(morphableQuadrangle);
 	}
+
+	void QuadrangleMorphing::setMorphableQuadrangle(Rectangle quadrangle) {
+		this->morphableQuadrangle = quadrangle;
+	}
+
 	double QuadrangleMorphing::deformation(double x) {
 		Point pointD = quadrangleHistory.at(2).getVector().at(3);
 		return (x * (pointD.getY() / pointD.getX()));
@@ -47,6 +51,7 @@ using namespace uschi;
 
 
 	void QuadrangleMorphing::startQuadrangleTransformation() {
+		addQuadrangle(morphableQuadrangle);
 		transformation(morphableQuadrangle);
 	}
 

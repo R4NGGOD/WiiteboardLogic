@@ -28,6 +28,7 @@ class QuadrangleMorphing {
 		QuadrangleMorphing::QuadrangleMorphing() { };
 		QuadrangleMorphing::QuadrangleMorphing(uschi::Rectangle quadrangle);
 		uschi::Rectangle QuadrangleMorphing::getFinalSquare();
+		void QuadrangleMorphing::setMorphableQuadrangle(uschi::Rectangle quadrangle);
 		void QuadrangleMorphing::startQuadrangleTransformation();
 		Point QuadrangleMorphing::startPointTransformation(Point point);
 		~QuadrangleMorphing() {};
