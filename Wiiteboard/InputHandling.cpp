@@ -4,11 +4,11 @@
 #include <array>
 
 
-std::array<bool, 4> InputHandling::LEFT_CLICK_DOWN_NIBBLE = { 0, 0, 0, 1 };
-std::array<bool, 4> InputHandling::LEFT_CLICK_UP_NIBBLE = { 0, 1, 0, 0 };
-std::array<bool, 4> InputHandling::RIGHT_CLICK_DOWN_NIBBLE = { 0, 0, 1, 0 };
-std::array<bool, 4> InputHandling::RIGHT_CLICK_UP_NIBBLE = { 0, 0, 1, 1 };
-std::array<bool, 4> InputHandling::MOUSE_DISCONNECT_NIBBLE = { 0, 0, 0, 0 };
+
+const std::array<bool, 4> LEFT_CLICK_UP_NIBBLE = { 0, 1, 0, 0 };
+const std::array<bool, 4> RIGHT_CLICK_DOWN_NIBBLE = { 0, 0, 1, 0 };
+const std::array<bool, 4> RIGHT_CLICK_UP_NIBBLE = { 0, 0, 1, 1 };
+const std::array<bool, 4> MOUSE_DISCONNECT_NIBBLE = { 0, 0, 0, 0 };
 
 //returns true if the 8 Bit limit is reached
 bool InputHandling::receiveBit(bool bit) {

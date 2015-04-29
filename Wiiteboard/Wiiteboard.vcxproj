@@ -83,7 +83,7 @@
   <ItemGroup>
     <ClInclude Include="InputHandling.h" />
     <ClInclude Include="MorphingController.h" />
-    <ClInclude Include="MouseInputDLL.h" />
+    <ClInclude Include="MouseMovement.h" />
     <ClInclude Include="PenAction.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="QuadrangleMorphing.h" />
@@ -94,6 +94,7 @@
   <ItemGroup>
     <ClCompile Include="InputHandling.cpp" />
     <ClCompile Include="MorphingController.cpp" />
+    <ClCompile Include="MouseMovement.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="QuadrangleMorphing.cpp" />
     <ClCompile Include="Rectangle.cpp" />
@@ -102,12 +103,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Wiiteboard.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="MouseInputDLL.lib" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="MouseInputDLL.dll" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

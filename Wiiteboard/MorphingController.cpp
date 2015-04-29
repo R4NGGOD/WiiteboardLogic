@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "MorphingController.h"
+#include "MouseMovement.h"
 
 
 
@@ -13,7 +14,7 @@ MorphingController::MorphingController()
 
 bool MorphingController::addCalibrationPoint(float x, float y) {
 	if (calibrationRectangle.getVector().size() <= 4) {
-		calibrationRectangle.addPoint(Point(x, y, 0));
+		calibrationRectangle.addPoint(Point(x * MorphingController::WIIMOTE_CAMERA_WIDTH, y * MorphingController::WIIMOTE_CAMERA_HEIGHT, 0));
 		return true;
 	}
 	return false;
@@ -43,12 +44,21 @@ bool MorphingController::finalCalibration() {
 }
 
 void MorphingController::getNewData(bool bitValue) {
-	inputHandling.receiveBit(bitValue);
+	PenAction penAction = MOVE_MOUSE;
+	if (inputHandling.receiveBit(bitValue)) {
+		penAction = inputHandling.getPenAction();
+	} 
+	executeMouseAction(lastPoint, penAction);
 }
 
 void MorphingController::getNewIRPoint(float x, float y) {
-	Point finalPoint = quadrangleMorphing.startPointTransformation(Point(x, y, 0));
-	//TODO stuff
+	lastPoint = quadrangleMorphing.startPointTransformation(Point(x * MorphingController::WIIMOTE_CAMERA_WIDTH, y * MorphingController::WIIMOTE_CAMERA_HEIGHT, 0));
+	
+}
+
+void MorphingController::executeMouseAction(Point mousePoint, PenAction penAction) {
+	MouseMovement::setPosition(mousePoint.getX(), mousePoint.getY());
+	switch (penAction)
 }
 
 MorphingController::~MorphingController()

@@ -4,6 +4,7 @@
 #include "QuadrangleMorphing.h"
 #include "InputHandling.h"
 #include "Rectangle.h"
+#include "Point.h"
 #include <cmath>
 
 class MorphingController
@@ -16,14 +17,17 @@ public:
 	void MorphingController::resetCalibration();
 	void MorphingController::getNewData(bool bitValue);
 	void MorphingController::getNewIRPoint(float x, float y);
+	static const int WIIMOTE_CAMERA_HEIGHT = 768;
+	static const int WIIMOTE_CAMERA_WIDTH = 1024;
 	~MorphingController();
 private:
 	QuadrangleMorphing MorphingController::quadrangleMorphing;
+	void MorphingController::executeMouseAction(Point mousePoint, PenAction penAction);
 	InputHandling MorphingController::inputHandling;
 	Rectangle MorphingController::calibrationRectangle;
 	std::vector<int> MorphingController::lastBitValues;
-	int MorphingController::WIIMOTE_HEIGHT = 768;
-	int MorphingController::WIIMOTE_WIDTH = 1024;
+	void doMouseAction(Point point, PenAction penAction);
+	Point MorphingController::lastPoint;
 };
 
 #endif
