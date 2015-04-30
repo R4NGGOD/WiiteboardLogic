@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "MorphingController.h"
 #include "MouseMovement.h"
+#include <iostream>
 
 
 
@@ -8,6 +9,7 @@
 MorphingController::MorphingController()
 {
 	quadrangleMorphing = QuadrangleMorphing();
+	mouseMovement = MouseMovement();
 	inputHandling = InputHandling();
 	calibrationRectangle = Rectangle();
 }
@@ -52,13 +54,17 @@ void MorphingController::getNewData(bool bitValue) {
 }
 
 void MorphingController::getNewIRPoint(float x, float y) {
-	lastPoint = quadrangleMorphing.startPointTransformation(Point(x * MorphingController::WIIMOTE_CAMERA_WIDTH, y * MorphingController::WIIMOTE_CAMERA_HEIGHT, 0));
-	
+	Point point = quadrangleMorphing.startPointTransformation(Point(x * MorphingController::WIIMOTE_CAMERA_WIDTH, y * MorphingController::WIIMOTE_CAMERA_HEIGHT, 0));
+	std::cout << quadrangleMorphing.getFinalSquare().isInsideOf(point);
+	if (quadrangleMorphing.getFinalSquare().isInsideOf(point)) {
+		lastPoint = point;
+	}
+
 }
 
 void MorphingController::executeMouseAction(Point mousePoint, PenAction penAction) {
-	MouseMovement::setPosition(mousePoint.getX(), mousePoint.getY());
-	switch (penAction)
+	mouseMovement.setMousePosition(mousePoint.getX() * 65665, mousePoint.getY() * 65665);
+	mouseMovement.executePenAction(penAction);
 }
 
 MorphingController::~MorphingController()

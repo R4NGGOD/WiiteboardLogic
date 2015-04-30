@@ -41,6 +41,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Users\Alex\Source\Repos\WiiteboardLogic\Wiiteboard\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Alex\Source\Repos\WiiteboardLogic\Wiiteboard\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -52,12 +54,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\Alex\Source\Repos\WiiteboardLogic\Wiiteboard</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Alex\Source\Repos\WiiteboardLogic\Wiiteboard\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Alex\Source\Repos\WiiteboardLogic\Wiiteboard</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Alex\Source\Repos\WiiteboardLogic\Wiiteboard\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>MouseInputDLL.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

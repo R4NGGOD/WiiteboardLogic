@@ -2,6 +2,7 @@
 #define MorphingController_h
 
 #include "QuadrangleMorphing.h"
+#include "MouseMovement.h"
 #include "InputHandling.h"
 #include "Rectangle.h"
 #include "Point.h"
@@ -22,9 +23,10 @@ public:
 	~MorphingController();
 private:
 	QuadrangleMorphing MorphingController::quadrangleMorphing;
+	MouseMovement MorphingController::mouseMovement;
 	void MorphingController::executeMouseAction(Point mousePoint, PenAction penAction);
 	InputHandling MorphingController::inputHandling;
-	Rectangle MorphingController::calibrationRectangle;
+	uschi::Rectangle MorphingController::calibrationRectangle;
 	std::vector<int> MorphingController::lastBitValues;
 	void doMouseAction(Point point, PenAction penAction);
 	Point MorphingController::lastPoint;

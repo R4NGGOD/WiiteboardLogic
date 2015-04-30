@@ -1,18 +1,19 @@
-#pragma once
-#include "PenAction.h";
+#ifndef MouseMovement_h
+#define MouseMovement_h
+#include "PenAction.h"
 class MouseMovement
 {
 public:
 	MouseMovement() {};
-	static void leftClick();
-	static void leftClickUp();
-	static void leftClickDown();
-	static void rightClick();
-	static void rightClickUp();
-	static void rightClickDown();
-	static void setPosition(int x, int y);
-	static void executePenAction(PenAction penAction);
+	void MouseMovement::leftClick();
+	void MouseMovement::leftClickUp();
+	void MouseMovement::leftClickDown();
+	void MouseMovement::rightClick();
+	void MouseMovement::rightClickUp();
+	void MouseMovement::rightClickDown();
+	void MouseMovement::setMousePosition(int x, int y);
+	void MouseMovement::executePenAction(PenAction penAction);
 	~MouseMovement() {};
 };
 
-		
+#endif MouseMovement_h;

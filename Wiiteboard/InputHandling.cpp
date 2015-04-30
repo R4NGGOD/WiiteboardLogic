@@ -4,11 +4,11 @@
 #include <array>
 
 
-
-const std::array<bool, 4> LEFT_CLICK_UP_NIBBLE = { 0, 1, 0, 0 };
-const std::array<bool, 4> RIGHT_CLICK_DOWN_NIBBLE = { 0, 0, 1, 0 };
-const std::array<bool, 4> RIGHT_CLICK_UP_NIBBLE = { 0, 0, 1, 1 };
-const std::array<bool, 4> MOUSE_DISCONNECT_NIBBLE = { 0, 0, 0, 0 };
+std::array<bool, 4> LEFT_CLICK_DOWN_NIBBLE = { 0, 0, 0, 1 };
+std::array<bool, 4> LEFT_CLICK_UP_NIBBLE = { 0, 1, 0, 0 };
+std::array<bool, 4> RIGHT_CLICK_DOWN_NIBBLE = { 0, 0, 1, 0 };
+std::array<bool, 4> RIGHT_CLICK_UP_NIBBLE = { 0, 0, 1, 1 };
+std::array<bool, 4> MOUSE_DISCONNECT_NIBBLE = { 0, 0, 0, 0 };
 
 //returns true if the 8 Bit limit is reached
 bool InputHandling::receiveBit(bool bit) {
@@ -16,16 +16,15 @@ bool InputHandling::receiveBit(bool bit) {
 		startBitReceived = !bit;
 	} 
 	if (startBitReceived) {
-		if (bitCounter < 8) {
-			byte[bitCounter] = bit;
-			bitCounter++;
-			return false;
-		}
-		else {
-			readFrame();
+		byte[bitCounter] = bit;
+		if (bitCounter == 7) {
 			bitCounter = 0;
+			startBitReceived = false;
+			readFrame();
 			return true;
 		}
+		bitCounter++;
+		return false;
 	}
 	return false;
 }
@@ -61,15 +60,22 @@ void InputHandling::readFrame() {
 }
 
 PenAction InputHandling::analyzePenAction() {
-	if (nibble == InputHandling::LEFT_CLICK_DOWN_NIBBLE) {
+	for (bool b : nibble) {
+		std::cout << "\n" << "Nibble: " << b << "\n";
+	}
+	if (nibble == LEFT_CLICK_DOWN_NIBBLE) {
 		penAction = LEFT_CLICK_DOWN;
-	} else if (nibble == InputHandling::LEFT_CLICK_UP_NIBBLE) {
+	}
+	else if (nibble == LEFT_CLICK_UP_NIBBLE) {
 		penAction = LEFT_CLICK_UP;
-	} else if (nibble == InputHandling::RIGHT_CLICK_DOWN_NIBBLE) {
+	}
+	else if (nibble == RIGHT_CLICK_DOWN_NIBBLE) {
 		penAction = RIGHT_CLICK_DOWN;
-	} else if (nibble == InputHandling::RIGHT_CLICK_UP_NIBBLE) {
+	}
+	else if (nibble == RIGHT_CLICK_UP_NIBBLE) {
 		penAction = RIGHT_CLICK_UP;
-	} else if (nibble == InputHandling::MOUSE_DISCONNECT_NIBBLE) {
+	}
+	else if (nibble == MOUSE_DISCONNECT_NIBBLE) {
 		penAction = MOUSE_DISCONNECT;
 	} else {
 		penAction = MOVE_MOUSE;

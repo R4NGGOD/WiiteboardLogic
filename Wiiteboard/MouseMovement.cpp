@@ -1,29 +1,29 @@
 #include "stdafx.h"
 #include "MouseMovement.h"
-//#include "MouseInputDLL.h"
+#include <MouseInputDLL.h>
 
 
 
 
-static void leftClickUp() {
-	//leftUp();
+void MouseMovement::leftClickUp() {
+	leftUp();
 }
-static void leftClickDown() {
-	//leftDown();
+void MouseMovement::leftClickDown() {
+	leftDown();
 }
-static void rightClickUp() {
-	//rightUp();
-}
-
-static void rightClickDown() {
-	//rightDown();
+void MouseMovement::rightClickUp() {
+	rightUp();
 }
 
-static void setPosition(int x, int y) {
-	//setPosition(x, y);
+void MouseMovement::rightClickDown() {
+	rightDown();
 }
 
-static void executePenAction(PenAction penAction) {
+void MouseMovement::setMousePosition(int x, int y) {
+	setPosition(x, 65665 - y);
+}
+
+void MouseMovement::executePenAction(PenAction penAction) {
 	switch (penAction) {
 		case RIGHT_CLICK_DOWN:
 			rightClickDown();
