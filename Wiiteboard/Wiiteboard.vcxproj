@@ -41,13 +41,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>Wiiteboard\include;$(IncludePath)</IncludePath>
-    <LibraryPath>Wiiteboard\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>E:\Schule\P5-Wiiteboard\workspace\Wiiteboard\Wiiteboard\Wiiteboard\include;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\Schule\P5-Wiiteboard\workspace\Wiiteboard\Wiiteboard\Wiiteboard\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <LibraryPath>Wiiteboard\lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>Wiiteboard\include;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\Schule\P5-Wiiteboard\workspace\Wiiteboard\Wiiteboard\Wiiteboard\lib;Wiiteboard\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>E:\Schule\P5-Wiiteboard\workspace\Wiiteboard\Wiiteboard\Wiiteboard\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -56,13 +56,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>Wiiteboard\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\Schule\P5-Wiiteboard\workspace\Wiiteboard\Wiiteboard\Wiiteboard\include;Wiiteboard\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>Wiiteboard\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>E:\Schule\P5-Wiiteboard\workspace\Wiiteboard\Wiiteboard\Wiiteboard\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>MouseInputDLL.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -76,14 +76,14 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <AdditionalIncludeDirectories>Wiiteboard\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\Schule\P5-Wiiteboard\workspace\Wiiteboard\Wiiteboard\Wiiteboard\include;Wiiteboard\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>Wiiteboard\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>E:\Schule\P5-Wiiteboard\workspace\Wiiteboard\Wiiteboard\Wiiteboard\lib;Wiiteboard\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>MouseInputDLL.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

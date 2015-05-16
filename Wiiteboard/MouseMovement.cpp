@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "MouseMovement.h"
-#include "include\MouseInputDLL.h"
+#include <MouseInputDLL.h> 
 
 
 

@@ -39,7 +39,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		y = rand() / (float) RAND_MAX;
 		std::cout << "Y: " << y << "\n";
 		morphCon.getNewIRPoint(x, y);
-		for (int i = 0; i < 8; ++i) {
+		/*for (int i = 0; i < 8; ++i) {
 			std::cout << "RightClickDown@i -> " << rightClickDown.at(i) << "\n";
 			morphCon.getNewData(rightClickDown.at(i));
 		}
@@ -58,6 +58,13 @@ int _tmain(int argc, _TCHAR* argv[])
 		for (int i = 0; i < 8; ++i) {
 			std::cout << "LeftClickUp@i -> " << leftClickUp.at(i) << "\n";
 			morphCon.getNewData(leftClickUp.at(i));
+		}*/
+
+		for (int i = 0; i < 100; ++i) {
+			morphCon.getNewData(1);
+			morphCon.getNewData(1);
+
+			morphCon.getNewData(0);
 		}
 		Sleep(1000);
 	}
