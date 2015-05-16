@@ -46,24 +46,24 @@ bool MorphingController::finalCalibration() {
 }
 
 void MorphingController::getNewData(bool bitValue) {
-	PenAction penAction = MOVE_MOUSE;
+	penAction = MOVE_MOUSE;
 	if (inputHandling.receiveBit(bitValue)) {
 		penAction = inputHandling.getPenAction();
 	} 
-	executeMouseAction(lastPoint, penAction);
+	
 }
 
-void MorphingController::getNewIRPoint(float x, float y) {
+Point MorphingController::getNewIRPoint(float x, float y) {
 	Point point = quadrangleMorphing.startPointTransformation(Point(x * MorphingController::WIIMOTE_CAMERA_WIDTH, y * MorphingController::WIIMOTE_CAMERA_HEIGHT, 0));
 	std::cout << quadrangleMorphing.getFinalSquare().isInsideOf(point);
 	if (quadrangleMorphing.getFinalSquare().isInsideOf(point)) {
-		lastPoint = point;
+		return Point(point.getX() * 65665, point.getY() * 65665, 0);
 	}
 
 }
 
 void MorphingController::executeMouseAction(Point mousePoint, PenAction penAction) {
-	mouseMovement.setMousePosition(mousePoint.getX() * 65665, mousePoint.getY() * 65665);
+	mouseMovement.setMousePosition(mousePoint.getX(), mousePoint.getY());
 	mouseMovement.executePenAction(penAction);
 }
 

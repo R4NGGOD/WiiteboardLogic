@@ -17,19 +17,18 @@ public:
 	bool MorphingController::deleteLastCalibrationPoint();
 	void MorphingController::resetCalibration();
 	void MorphingController::getNewData(bool bitValue);
-	void MorphingController::getNewIRPoint(float x, float y);
+	Point MorphingController::getNewIRPoint(float x, float y);
+	void MorphingController::executeMouseAction(Point mousePoint, PenAction penAction);
 	static const int WIIMOTE_CAMERA_HEIGHT = 768;
 	static const int WIIMOTE_CAMERA_WIDTH = 1024;
 	~MorphingController();
 private:
 	QuadrangleMorphing MorphingController::quadrangleMorphing;
 	MouseMovement MorphingController::mouseMovement;
-	void MorphingController::executeMouseAction(Point mousePoint, PenAction penAction);
 	InputHandling MorphingController::inputHandling;
 	uschi::Rectangle MorphingController::calibrationRectangle;
 	std::vector<int> MorphingController::lastBitValues;
-	void doMouseAction(Point point, PenAction penAction);
-	Point MorphingController::lastPoint;
+	PenAction MorphingController::penAction;
 };
 
 #endif
