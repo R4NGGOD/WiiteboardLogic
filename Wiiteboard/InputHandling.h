@@ -12,11 +12,12 @@ public:
 	PenAction InputHandling::analyzePenAction();
 	~InputHandling();
 private:
-	std::array<bool, 8> InputHandling::byte;
+	std::array<bool, 12> InputHandling::byte;
 	std::array<bool, 4> InputHandling::nibble;
+	std::array<bool, 6> InputHandling::translatedBits;
 	bool startBitReceived = false;
 	int InputHandling::bitCounter = 0;
-	void InputHandling::readFrame();
+	bool InputHandling::readFrame();
 	PenAction InputHandling::penAction;
 
 };

@@ -9,37 +9,38 @@ std::array<bool, 4> LEFT_CLICK_UP_NIBBLE = { 0, 1, 0, 0 };
 std::array<bool, 4> RIGHT_CLICK_DOWN_NIBBLE = { 0, 0, 1, 0 };
 std::array<bool, 4> RIGHT_CLICK_UP_NIBBLE = { 0, 0, 1, 1 };
 std::array<bool, 4> MOUSE_DISCONNECT_NIBBLE = { 0, 0, 0, 0 };
+std::array<bool, 4> MOVE_MOUSE_NIBBLE = { 0, 1, 1, 1 };
+std::array<bool, 2> CORRECT_START_BITS = { 0, 1 };
 
 //returns true if the 8 Bit limit is reached
 bool InputHandling::receiveBit(bool bit) {
-	if (!startBitReceived) {
-		startBitReceived = !bit;
-	} 
-	if (startBitReceived) {
-		byte[bitCounter] = bit;
-		if (bitCounter >= 7) {
-			bitCounter = 0;
-			startBitReceived = false;
-			readFrame();
-			return true;
-		}
-		bitCounter++;
-		return false;
+	byte[bitCounter] = bit;
+	if (bitCounter >= 11) {
+		bitCounter = 0;
+		readFrame();
+		return true;
 	}
+	bitCounter++;
 	return false;
 }
 
-void InputHandling::readFrame() {
+bool InputHandling::readFrame() {
 	bool lastBit = byte[0];
 	int counter = 0;
 	int byteIndex = 0;
+	int startBitIndex = 0;
 	int index = 0;
 	for (bool b : byte) {
-		if (b == lastBit && byteIndex < 7) {
+		if (b == lastBit && byteIndex < 11) {
 			counter++;
 		}
+		else if (byteIndex == 4) {
+			if (translatedBits[0] != CORRECT_START_BITS[0] || translatedBits[1] != CORRECT_START_BITS[1]) {
+				return false;
+			}
+		}
 		else {
-			if (byteIndex == 7) {
+			if (byteIndex == 11) {
 				counter++;
 			}
 			if (lastBit) {
@@ -51,7 +52,7 @@ void InputHandling::readFrame() {
 			int curIndex = index;
 			for (; index < curIndex + counter; ++index) {
 				std::cout << "Index: " << index;
-				nibble[index] = lastBit;
+				translatedBits[index] = lastBit;
 			}
 			if (lastBit && byteIndex % 2 == 1) {
 				counter = 1;
@@ -66,6 +67,14 @@ void InputHandling::readFrame() {
 		byteIndex++;
 		lastBit = b;
 	}
+	if (translatedBits[0] == CORRECT_START_BITS[0] && translatedBits[1] == CORRECT_START_BITS[1]) {
+		for (int i = 2; i < translatedBits.size(); ++i) {
+			nibble[i - 2] = translatedBits[i];
+		}
+		return true;
+	}
+	nibble = MOVE_MOUSE_NIBBLE;
+	return false;
 }
 
 PenAction InputHandling::analyzePenAction() {

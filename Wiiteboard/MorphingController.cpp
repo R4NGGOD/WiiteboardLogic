@@ -59,7 +59,6 @@ Point MorphingController::getNewIRPoint(float x, float y) {
 	if (quadrangleMorphing.getFinalSquare().isInsideOf(point)) {
 		return Point(point.getX() * 65665, point.getY() * 65665, 0);
 	}
-
 }
 
 void MorphingController::executeMouseAction(Point mousePoint, PenAction penAction) {
