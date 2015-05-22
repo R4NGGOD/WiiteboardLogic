@@ -16,6 +16,7 @@ private:
 	std::array<bool, 4> InputHandling::nibble;
 	std::array<bool, 6> InputHandling::translatedBits;
 	bool startBitReceived = false;
+	bool lastBit = false;
 	int InputHandling::bitCounter = 0;
 	bool InputHandling::readFrame();
 	PenAction InputHandling::penAction;

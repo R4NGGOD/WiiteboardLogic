@@ -1,5 +1,4 @@
-// Wiiteboard.cpp : Defines the entry point for the console application.
-//
+//AUTHOR: Alexander Ciupka
 
 #include "stdafx.h"
 #include <iostream>

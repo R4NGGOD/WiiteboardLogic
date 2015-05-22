@@ -1,3 +1,5 @@
+//AUTHOR: Alexander Ciupka
+
 #include "stdafx.h"
 #include "QuadrangleMorphing.h"
 #include "Rectangle.h"

@@ -1,3 +1,5 @@
+//AUTHOR: Alexander Ciupka
+
 #include "stdafx.h"
 #include "Point.h"
 
